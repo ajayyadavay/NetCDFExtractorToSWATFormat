@@ -1,0 +1,104 @@
+TODOs
+
+2019.10.19
+
+dot prefix now ok for capture_melt_multiple.
+
+informative error messages to enforce unique column names in input and
+output of capture_melt_*.
+
+2019.10.14
+
+capture_first_melt -> capture_melt_single.
+
+capture_first_melt_multiple -> capture_melt_multiple.
+
+2019.10.11
+
+new vignettes 3=melt 4=comparison.
+
+move unicode data from example to extdata in order to avoid the
+following on CRAN solaris:
+
+    Warning in deparse(e[[2L]]) :
+     it is not known that wchar_t is Unicode on this platform
+
+2019.9.28
+
+capture_first_melt_multiple inspired by data.table::patterns.
+
+capture_first_melt inspired by tidyr::pivot_longer.
+
+Suggest tidyr for who data example.
+
+2019.9.18
+
+additional citation/medline web page data/examples.
+
+2019.9.16
+
+do not do engine tests (with rename library dirs) on CRAN.
+
+remove print/str from error messages for CRAN.
+
+group, field functions.
+
+2019.9.12
+
+always output data.table.
+
+2019.9.10
+
+test 0 column result via NULL names and rownames, not
+identical/expected data.frame.
+
+2019.9.4
+
+engine error message includes install.packages.
+
+2019.9.3
+
+dput used for did you mean error message.
+
+vignettes separated, 1=first 2=all.
+
+2019.8.22
+
+DESCRIPTION updated.
+
+Informative error for named character string patterns.
+
+2019.8.21
+
+main functions renamed to capture_* for auto-complete convenience.
+
+on https://github.com/gagolews/stringi/issues/279 it says ICU >= 59 is
+required for emoji support. but travis uses Ubuntu xenial system ICU
+(55.1) by default. Ubuntu bionic has ICU 60.2
+https://launchpad.net/ubuntu/bionic/+source/icu so travis build will
+most likely be fixed by telling travis to use bionic. Actually dist:
+bionic builds use xenial still for language: r,
+https://travis-ci.community/t/for-dist-bionic-xenial-vm-is-used-instead-with-language-rust/4487/2
+So instead we fix the build by making if interactive() for this
+example, and adding another engine="ICU" example based on
+http://userguide.icu-project.org/strings/regexp for str_capture_all.
+
+docs.
+
+vignette.
+
+FIXED: needed to escape backslashes in examples.
+Executing example(vec_capture_first) gives
+> vec_capture_first(
++ "a\U0001F60E#",
++ emoji="\p{EMOJI_Presentation}",
+Erreur : '\p' est un code escape non reconnu dans une chaîne de caractères débutant ""\p"
+(but executing the example from C-c C-c in R/vec_capture_first.R works fine)
+
+2019.8.14
+
+first version forked from namedCapture.
+
+vec_capture_first, str_capture_all, df_capture_first pass tests for
+three engines: ICU, PCRE, RE2.
+

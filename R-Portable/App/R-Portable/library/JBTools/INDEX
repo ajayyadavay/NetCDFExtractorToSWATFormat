@@ -1,0 +1,29 @@
+JBTools-package         Misc Small Tools and Helper Functions for Other
+                        Code of J. Buttlar
+MEF                     Compute the modelling efficiency (MEF)
+RMSE                    Compute the residual mean square error (RMSE)
+checkInstalled          Check whether a command can be invoked via the
+                        command line
+colorChangeDarkness     Change the dark/brightness of a color
+convertArgs2String      Save function argument values to a character
+                        string
+getSysinfo              Compile system information
+getVecInfo              Compute vector summary statistics
+indexDimVecs2Matrix     Transform integer indices to an index matrix
+indexVec2Matrix         Transform a vector index to an index matrix
+isSeriesConstant        Check whether a vector is constant
+isSeriesContinuous      Test for continuous (non NA interrupted) series
+labelMargins            Label the margins of a plot
+plotBG                  Plot a colored plot background
+plotColorScale          Add a color scale to plots
+plotImageRotated        Plot a rotated image plot
+plotNLines              Plot many lines in one plot
+printStatus             Print a status message
+rangeZeroEqui           Compute a zero centered equi-sided range
+registerParallel        Set up a parallel computing front end
+seqLength               Determine lengths of sequences of identical
+                        elements
+seqLongest              find longest sequence of TRUEs
+userCoords              Transfer relative to actual plot coordinate
+                        values
+whichClosest            Find closest matches in two vectors

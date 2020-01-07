@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Capture all matches in a single subject string</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{vignette 2: capture all matches}
+-->
+
+<h1>Capture all matches in a single subject string</h1>
+
+<p>The <code>nc::capture_all_str</code> function is for the common case of
+extracting each match from a multi-line text file (a single large
+subject string). In this section we demonstrate how to extract data
+tables from such loosely structured text data. For example we consider
+the following <a href="http://genome.cse.ucsc.edu/goldenPath/help/hgTrackHubHelp.html">track
+hub</a>
+meta-data file:</p>
+
+<pre><code class="r">trackDb.txt.gz &lt;- system.file(
+  &quot;extdata&quot;, &quot;trackDb.txt.gz&quot;, package=&quot;nc&quot;)
+trackDb.vec &lt;- readLines(trackDb.txt.gz)
+</code></pre>
+
+<p>Some representative lines from that file are shown below.</p>
+
+<pre><code class="r">cat(trackDb.vec[78:107], sep=&quot;\n&quot;)
+#&gt; track peaks_summary
+#&gt; type bigBed 5
+#&gt; shortLabel _model_peaks_summary
+#&gt; longLabel Regions with a peak in at least one sample
+#&gt; visibility pack
+#&gt; itemRgb off
+#&gt; spectrum on
+#&gt; bigDataUrl http://hubs.hpc.mcgill.ca/~thocking/PeakSegFPOP-/peaks_summary.bigBed
+#&gt; 
+#&gt; 
+#&gt;  track bcell_McGill0091
+#&gt;  parent bcell
+#&gt;  container multiWig
+#&gt;  type bigWig
+#&gt;  shortLabel bcell_McGill0091
+#&gt;  longLabel bcell | McGill0091
+#&gt;  graphType points
+#&gt;  aggregate transparentOverlay
+#&gt;  showSubtrackColorOnUi on
+#&gt;  maxHeightPixels 25:12:8
+#&gt;  visibility full
+#&gt;  autoScale on
+#&gt; 
+#&gt;   track bcell_McGill0091Coverage
+#&gt;   bigDataUrl http://hubs.hpc.mcgill.ca/~thocking/PeakSegFPOP-/samples/bcell/McGill0091/coverage.bigWig
+#&gt;   shortLabel bcell_McGill0091Coverage
+#&gt;   longLabel bcell | McGill0091 | Coverage
+#&gt;   parent bcell_McGill0091
+#&gt;   type bigWig
+#&gt;   color 141,211,199
+</code></pre>
+
+<h2>Match all tracks in the text file</h2>
+
+<p>Each block of text begins with &ldquo;track&rdquo; and includes several lines of
+data before the block ends with two consecutive newlines. That pattern
+is coded below using a regex:</p>
+
+<pre><code class="r">tracks.dt &lt;- nc::capture_all_str(
+  trackDb.vec, 
+  &quot;track &quot;,
+  track=&quot;\\S+&quot;,
+  fields=&quot;(?:\n[^\n]+)*&quot;,
+  &quot;\n&quot;)
+str(tracks.dt)
+#&gt; Classes &#39;data.table&#39; and &#39;data.frame&#39;:   123 obs. of  2 variables:
+#&gt;  $ track : chr  &quot;bcell&quot; &quot;kidneyCancer&quot; &quot;kidney&quot; &quot;leukemiaCD19CD10BCells&quot; ...
+#&gt;  $ fields: chr  &quot;\nsuperTrack on show\nshortLabel bcell\nlongLabel bcell ChIP-seq samples&quot; &quot;\nsuperTrack on show\nshortLabel kidneyCancer\nlongLabel kidneyCancer ChIP-seq samples&quot; &quot;\nsuperTrack on show\nshortLabel kidney\nlongLabel kidney ChIP-seq samples&quot; &quot;\nsuperTrack on show\nshortLabel leukemiaCD19CD10BCells\nlongLabel leukemiaCD19CD10BCells ChIP-seq samples&quot; ...
+#&gt;  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
+</code></pre>
+
+<p>The result is a data.table with one row for each track block that
+matches the regex. There are two character columns: <code>track</code> is a
+unique name, and <code>fields</code> is a string with the rest of the data
+in that block:</p>
+
+<pre><code class="r">tracks.dt[, .(track, fields.start=substr(fields, 1, 30))]
+#&gt;                         track                     fields.start
+#&gt;   1:                    bcell \nsuperTrack on show\nshortLabel
+#&gt;   2:             kidneyCancer \nsuperTrack on show\nshortLabel
+#&gt;   3:                   kidney \nsuperTrack on show\nshortLabel
+#&gt;   4:   leukemiaCD19CD10BCells \nsuperTrack on show\nshortLabel
+#&gt;   5:                 monocyte \nsuperTrack on show\nshortLabel
+#&gt;  ---                                                          
+#&gt; 119: tcell_McGill0106Coverage  \n  bigDataUrl http://hubs.hpc.
+#&gt; 120:    tcell_McGill0106Peaks  \n  bigDataUrl http://hubs.hpc.
+#&gt; 121:         tcell_McGill0107 \n parent tcell\n container mult
+#&gt; 122: tcell_McGill0107Coverage  \n  bigDataUrl http://hubs.hpc.
+#&gt; 123:    tcell_McGill0107Peaks  \n  bigDataUrl http://hubs.hpc.
+</code></pre>
+
+<h2>Match all fields in each track</h2>
+
+<p>Each block has a variable number of lines/fields. Each line starts
+with a field name, followed by a space, followed by the field
+value. That regex is coded below:</p>
+
+<pre><code class="r">(fields.dt &lt;- tracks.dt[, nc::capture_all_str(
+  fields,
+  &quot;\\s+&quot;,
+  variable=&quot;.*?&quot;,
+  &quot; &quot;,
+  value=&quot;[^\n]+&quot;),  
+  by=track])
+#&gt;                      track   variable                      value
+#&gt;   1:                 bcell superTrack                    on show
+#&gt;   2:                 bcell shortLabel                      bcell
+#&gt;   3:                 bcell  longLabel     bcell ChIP-seq samples
+#&gt;   4:          kidneyCancer superTrack                    on show
+#&gt;   5:          kidneyCancer shortLabel               kidneyCancer
+#&gt;  ---                                                            
+#&gt; 899: tcell_McGill0107Peaks shortLabel      tcell_McGill0107Peaks
+#&gt; 900: tcell_McGill0107Peaks  longLabel tcell | McGill0107 | Peaks
+#&gt; 901: tcell_McGill0107Peaks     parent           tcell_McGill0107
+#&gt; 902: tcell_McGill0107Peaks       type                     bigWig
+#&gt; 903: tcell_McGill0107Peaks      color                      0,0,0
+str(fields.dt)
+#&gt; Classes &#39;data.table&#39; and &#39;data.frame&#39;:   903 obs. of  3 variables:
+#&gt;  $ track   : chr  &quot;bcell&quot; &quot;bcell&quot; &quot;bcell&quot; &quot;kidneyCancer&quot; ...
+#&gt;  $ variable: chr  &quot;superTrack&quot; &quot;shortLabel&quot; &quot;longLabel&quot; &quot;superTrack&quot; ...
+#&gt;  $ value   : chr  &quot;on show&quot; &quot;bcell&quot; &quot;bcell ChIP-seq samples&quot; &quot;on show&quot; ...
+#&gt;  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
+</code></pre>
+
+<p>Note that because <code>by=track</code> was specified, <code>nc::capture_all_str</code> is
+called for each unique value of <code>track</code> (i.e. each row). The results
+are combined into a single data.table with one row for each
+field. This data.table can be easily queried, e.g.</p>
+
+<pre><code class="r">fields.dt[
+  J(&quot;tcell_McGill0107Coverage&quot;, &quot;bigDataUrl&quot;),
+  value,
+  on=.(track, variable)]
+#&gt; [1] &quot;http://hubs.hpc.mcgill.ca/~thocking/PeakSegFPOP-/samples/tcell/McGill0107/coverage.bigWig&quot;
+fields.dt[, .(count=.N), by=variable][order(count)]
+#&gt;                  variable count
+#&gt;  1:               itemRgb     4
+#&gt;  2:              spectrum     4
+#&gt;  3:            superTrack     8
+#&gt;  4:             container    37
+#&gt;  5:             graphType    37
+#&gt;  6:             aggregate    37
+#&gt;  7: showSubtrackColorOnUi    37
+#&gt;  8:       maxHeightPixels    37
+#&gt;  9:             autoScale    37
+#&gt; 10:            visibility    41
+#&gt; 11:                 color    74
+#&gt; 12:            bigDataUrl    78
+#&gt; 13:                parent   111
+#&gt; 14:                  type   115
+#&gt; 15:            shortLabel   123
+#&gt; 16:             longLabel   123
+</code></pre>
+
+<p>For more information about data.table syntax, read
+<code>vignette(&quot;datatable-intro&quot;, package=&quot;data.table&quot;)</code>.</p>
+
+<h2>Match all tracks and some fields with one regex</h2>
+
+<p>In the examples above we extracted all fields from all tracks (using
+two regexes, one for the track, one for the field). In the example
+below we extract only the track name, split into separate columns
+(using a single regex for the track).</p>
+
+<pre><code class="r">cell.sample.type &lt;- list(
+  cellType=&quot;[^ ]*?&quot;,
+  &quot;_&quot;,
+  sampleName=list(
+    &quot;McGill&quot;,
+    sampleID=&quot;[0-9]+&quot;, as.integer),
+  dataType=&quot;Coverage|Peaks&quot;)
+nc::capture_all_str(trackDb.vec, cell.sample.type)
+#&gt;      cellType sampleName sampleID dataType
+#&gt;   1:    bcell McGill0091       91 Coverage
+#&gt;   2:    bcell McGill0091       91 Coverage
+#&gt;   3:    bcell McGill0091       91    Peaks
+#&gt;   4:    bcell McGill0091       91    Peaks
+#&gt;   5:    bcell McGill0322      322 Coverage
+#&gt;  ---                                      
+#&gt; 144:    tcell McGill0106      106    Peaks
+#&gt; 145:    tcell McGill0107      107 Coverage
+#&gt; 146:    tcell McGill0107      107 Coverage
+#&gt; 147:    tcell McGill0107      107    Peaks
+#&gt; 148:    tcell McGill0107      107    Peaks
+</code></pre>
+
+<p>Note that the pattern above defines nested capture groups via named
+lists (e.g. sampleID is a subset of sampleName). The pattern below
+matches either the previously specified track pattern, or any other
+type of track name:</p>
+
+<pre><code class="r">sample.or.anything &lt;- list(
+  cell.sample.type,
+  &quot;|&quot;,
+  &quot;[^\n]+&quot;)
+track.pattern.old &lt;- list(
+  &quot;track &quot;,
+  track=sample.or.anything)
+nc::capture_all_str(trackDb.vec, track.pattern.old)
+#&gt;                         track cellType sampleName sampleID dataType
+#&gt;   1:                    bcell                           NA         
+#&gt;   2:             kidneyCancer                           NA         
+#&gt;   3:                   kidney                           NA         
+#&gt;   4:   leukemiaCD19CD10BCells                           NA         
+#&gt;   5:                 monocyte                           NA         
+#&gt;  ---                                                               
+#&gt; 119: tcell_McGill0106Coverage    tcell McGill0106      106 Coverage
+#&gt; 120:    tcell_McGill0106Peaks    tcell McGill0106      106    Peaks
+#&gt; 121:         tcell_McGill0107                           NA         
+#&gt; 122: tcell_McGill0107Coverage    tcell McGill0107      107 Coverage
+#&gt; 123:    tcell_McGill0107Peaks    tcell McGill0107      107    Peaks
+</code></pre>
+
+<p>Notice the repetition of <code>track</code> in the pattern above. This can be
+avoided by using the <code>nc::field</code> helper function, which takes three
+arguments, that are pasted together to form a pattern:</p>
+
+<ul>
+<li><code>field.name</code> is used as a pattern, and as the capture group
+(column) name for the pattern specified in the third argument.</li>
+<li><code>between.pattern</code> is a pattern that matches between the other two patterns.</li>
+<li><code>field.pattern</code> is the pattern that matches the text to be extracted
+in a capture group.</li>
+</ul>
+
+<p>The example above can thus be re-written as below, avoiding the
+repetition of <code>track</code> which was present above:</p>
+
+<pre><code class="r">track.pattern &lt;- nc::field(&quot;track&quot;, &quot; &quot;, sample.or.anything)
+nc::capture_all_str(trackDb.vec, track.pattern)
+#&gt;                         track cellType sampleName sampleID dataType
+#&gt;   1:                    bcell                           NA         
+#&gt;   2:             kidneyCancer                           NA         
+#&gt;   3:                   kidney                           NA         
+#&gt;   4:   leukemiaCD19CD10BCells                           NA         
+#&gt;   5:                 monocyte                           NA         
+#&gt;  ---                                                               
+#&gt; 119: tcell_McGill0106Coverage    tcell McGill0106      106 Coverage
+#&gt; 120:    tcell_McGill0106Peaks    tcell McGill0106      106    Peaks
+#&gt; 121:         tcell_McGill0107                           NA         
+#&gt; 122: tcell_McGill0107Coverage    tcell McGill0107      107 Coverage
+#&gt; 123:    tcell_McGill0107Peaks    tcell McGill0107      107    Peaks
+</code></pre>
+
+<p>Finally we use <code>field</code> again to match the type column:</p>
+
+<pre><code class="r">any.lines.pattern &lt;- &quot;(?:\n[^\n]+)*&quot;
+nc::capture_all_str(
+  trackDb.vec,
+  track.pattern,
+  any.lines.pattern,
+  &quot;\\s+&quot;,
+  nc::field(&quot;type&quot;, &quot; &quot;, &quot;[^\n]+&quot;))
+#&gt;                         track cellType sampleName sampleID dataType
+#&gt;   1:               all_labels                           NA         
+#&gt;   2:                 problems                           NA         
+#&gt;   3:            jointProblems                           NA         
+#&gt;   4:            peaks_summary                           NA         
+#&gt;   5:         bcell_McGill0091                           NA         
+#&gt;  ---                                                               
+#&gt; 111: tcell_McGill0106Coverage    tcell McGill0106      106 Coverage
+#&gt; 112:    tcell_McGill0106Peaks    tcell McGill0106      106    Peaks
+#&gt; 113:         tcell_McGill0107                           NA         
+#&gt; 114: tcell_McGill0107Coverage    tcell McGill0107      107 Coverage
+#&gt; 115:    tcell_McGill0107Peaks    tcell McGill0107      107    Peaks
+#&gt;          type
+#&gt;   1: bigBed 9
+#&gt;   2: bigBed 3
+#&gt;   3: bigBed 3
+#&gt;   4: bigBed 5
+#&gt;   5:   bigWig
+#&gt;  ---         
+#&gt; 111:   bigWig
+#&gt; 112:   bigWig
+#&gt; 113:   bigWig
+#&gt; 114:   bigWig
+#&gt; 115:   bigWig
+</code></pre>
+
+<p>Exercise for the reader (easy): modify the above regex in order to capture
+the bigDataUrl field, and three additional columns (red, green, blue)
+from the color field. Assume that <code>bigDataUrl</code> occurs before <code>color</code>
+in each track. Note that this is a limitation of the single regex
+approach &mdash; using two regex, as described in previous sections, could
+extract any/all fields, even if they appear in different orders in
+different tracks.</p>
+
+<p>Exercise for the reader (hard): note that the last code block only
+matches tracks which define the type field. How would you optionally
+match the type field? Hint: the current <code>any.lines.pattern</code> can match
+the type field.</p>
+
+<h1>Parsing SweeD output files</h1>
+
+<p>Some representative lines from one output file are shown below.</p>
+
+<pre><code class="r">info.txt.gz &lt;- system.file(
+  &quot;extdata&quot;, &quot;SweeD_Info.txt.gz&quot;, package=&quot;nc&quot;)
+info.vec &lt;- readLines(info.txt.gz)
+info.vec[20:50]
+#&gt;  [1] &quot; Total number of samples in the VCF:\t13&quot;
+#&gt;  [2] &quot; Samples excluded from the analysis:\t6&quot; 
+#&gt;  [3] &quot;&quot;                                       
+#&gt;  [4] &quot;&quot;                                       
+#&gt;  [5] &quot; Alignment 1&quot;                           
+#&gt;  [6] &quot;&quot;                                       
+#&gt;  [7] &quot;\t\tChromosome:\t\tscaffold_0&quot;              
+#&gt;  [8] &quot;\t\tSequences:\t\t14&quot;                       
+#&gt;  [9] &quot;\t\tSites:\t\t\t1670366&quot;                     
+#&gt; [10] &quot;\t\tDiscarded sites:\t1264068&quot;             
+#&gt; [11] &quot;&quot;                                       
+#&gt; [12] &quot;\t\tProcessing:\t\t155.53 seconds&quot;          
+#&gt; [13] &quot;&quot;                                       
+#&gt; [14] &quot;\t\tPosition:\t\t8.936200e+07&quot;              
+#&gt; [15] &quot;\t\tLikelihood:\t\t4.105582e+02&quot;            
+#&gt; [16] &quot;\t\tAlpha:\t\t\t6.616326e-06&quot;                
+#&gt; [17] &quot;&quot;                                       
+#&gt; [18] &quot;&quot;                                       
+#&gt; [19] &quot; Alignment 2&quot;                           
+#&gt; [20] &quot;&quot;                                       
+#&gt; [21] &quot;\t\tChromosome:\t\tscaffold_1&quot;              
+#&gt; [22] &quot;\t\tSequences:\t\t14&quot;                       
+#&gt; [23] &quot;\t\tSites:\t\t\t1447008&quot;                     
+#&gt; [24] &quot;\t\tDiscarded sites:\t1093595&quot;             
+#&gt; [25] &quot;&quot;                                       
+#&gt; [26] &quot;\t\tProcessing:\t\t138.83 seconds&quot;          
+#&gt; [27] &quot;&quot;                                       
+#&gt; [28] &quot;\t\tPosition:\t\t8.722482e+07&quot;              
+#&gt; [29] &quot;\t\tLikelihood:\t\t2.531514e+02&quot;            
+#&gt; [30] &quot;\t\tAlpha:\t\t\t1.031963e-05&quot;                
+#&gt; [31] &quot;&quot;
+</code></pre>
+
+<p>The Alignment numbers must be matched with the numbers before slashes
+in the other file,</p>
+
+<pre><code class="r">report.txt.gz &lt;- system.file(
+  &quot;extdata&quot;, &quot;SweeD_Report.txt.gz&quot;, package=&quot;nc&quot;)
+report.vec &lt;- readLines(report.txt.gz)
+cat(report.vec[1:10], sep=&quot;\n&quot;)
+#&gt; 
+#&gt; //1
+#&gt; Position Likelihood  Alpha
+#&gt; 700.0000 4.637328e-03    2.763840e+02
+#&gt; 130585.6172  3.781283e-01    8.490200e-04
+#&gt; 260471.2344  3.602315e-02    4.691340e-03
+#&gt; 390356.8516  7.618749e-01    5.377668e-04
+#&gt; 520242.4688  2.979971e-08    1.411765e-01
+#&gt; 650128.0859  3.552965e-03    7.790821e-03
+#&gt; 780013.7031  4.637359e-03    1.727400e-02
+cat(report.vec[1000:1010], sep=&quot;\n&quot;)
+#&gt; 129366774.7188   1.218965e-01    2.215489e-02
+#&gt; 129496660.3359   1.165627e-02    3.384931e-02
+#&gt; 129626545.9531   2.233934e-02    3.602669e-02
+#&gt; 129756434.0000   3.850623e-01    4.812648e+01
+#&gt; 
+#&gt; //2
+#&gt; Position Likelihood  Alpha
+#&gt; 135.0000 7.282316e-01    3.163686e+01
+#&gt; 111533.0625  2.548831e+00    4.932014e-04
+#&gt; 222931.1250  1.369720e-02    1.044774e+00
+#&gt; 334329.1875  7.118828e+00    3.965791e-04
+</code></pre>
+
+<p>The goal is to produce a bed file, which has tab-separated values with
+four columns: chrom, chromStart, chromEnd, Likelihood. The chrom
+values appear in the info file (Chromosome) so we will need to join
+the two files based on alignment ID.
+First we capture all alignments in the info file:</p>
+
+<pre><code class="r">(info.dt &lt;- nc::capture_all_str(
+  info.vec,
+  &quot;Alignment &quot;,
+  alignment=&quot;[0-9]+&quot;,
+  &quot;\n\n\t\tChromosome:\t\t&quot;,
+  chrom=&quot;.*&quot;,
+  &quot;\n&quot;))
+#&gt;     alignment      chrom
+#&gt;  1:         1 scaffold_0
+#&gt;  2:         2 scaffold_1
+#&gt;  3:         3 scaffold_2
+#&gt;  4:         4 scaffold_3
+#&gt;  5:         5 scaffold_4
+#&gt;  6:         6 scaffold_5
+#&gt;  7:         7 scaffold_6
+#&gt;  8:         8 scaffold_7
+#&gt;  9:         9 scaffold_8
+#&gt; 10:        10 scaffold_9
+</code></pre>
+
+<p>Then we capture all alignment/csv blocks in the report file:</p>
+
+<pre><code class="r">(report.dt &lt;- nc::capture_all_str(
+  report.vec,
+  &quot;//&quot;,
+  alignment=&quot;[0-9]+&quot;,
+  &quot;\n&quot;,
+  csv=&quot;[^/]+&quot;
+)[, {
+  data.table::fread(text=csv)
+}, by=alignment])
+#&gt;        alignment   Position   Likelihood        Alpha
+#&gt;     1:         1      700.0 4.637328e-03 2.763840e+02
+#&gt;     2:         1   130585.6 3.781283e-01 8.490200e-04
+#&gt;     3:         1   260471.2 3.602315e-02 4.691340e-03
+#&gt;     4:         1   390356.9 7.618749e-01 5.377668e-04
+#&gt;     5:         1   520242.5 2.979971e-08 1.411765e-01
+#&gt;    ---                                               
+#&gt;  9996:        10 82991564.8 8.051006e-03 1.357819e-03
+#&gt;  9997:        10 83074967.8 7.048433e-03 1.825764e-03
+#&gt;  9998:        10 83158370.8 1.012360e-07 7.999999e-03
+#&gt;  9999:        10 83241773.8 3.977189e-08 9.999997e-01
+#&gt; 10000:        10 83325174.0 3.980538e-08 1.200000e+03
+</code></pre>
+
+<p>Note that because <code>by=alignment</code> was specified, <code>fread</code> is called for
+each unique value of <code>alignment</code> (i.e. each row). The results are
+combined into a single data.table with all of the csv data from the
+original file, plus the additional <code>alignment</code> column. Next, we join
+this table to the previous table in order to get the <code>chrom</code> column:</p>
+
+<pre><code class="r">(join.dt &lt;- report.dt[info.dt, on=.(alignment)])
+#&gt;        alignment   Position   Likelihood        Alpha      chrom
+#&gt;     1:         1      700.0 4.637328e-03 2.763840e+02 scaffold_0
+#&gt;     2:         1   130585.6 3.781283e-01 8.490200e-04 scaffold_0
+#&gt;     3:         1   260471.2 3.602315e-02 4.691340e-03 scaffold_0
+#&gt;     4:         1   390356.9 7.618749e-01 5.377668e-04 scaffold_0
+#&gt;     5:         1   520242.5 2.979971e-08 1.411765e-01 scaffold_0
+#&gt;    ---                                                          
+#&gt;  9996:        10 82991564.8 8.051006e-03 1.357819e-03 scaffold_9
+#&gt;  9997:        10 83074967.8 7.048433e-03 1.825764e-03 scaffold_9
+#&gt;  9998:        10 83158370.8 1.012360e-07 7.999999e-03 scaffold_9
+#&gt;  9999:        10 83241773.8 3.977189e-08 9.999997e-01 scaffold_9
+#&gt; 10000:        10 83325174.0 3.980538e-08 1.200000e+03 scaffold_9
+</code></pre>
+
+<p>Finally the desired bed table can be created via</p>
+
+<pre><code class="r">join.dt[, .(
+  chrom,
+  chromStart=as.integer(Position-1),
+  chromEnd=as.integer(Position),
+  Likelihood)]
+#&gt;             chrom chromStart chromEnd   Likelihood
+#&gt;     1: scaffold_0        699      700 4.637328e-03
+#&gt;     2: scaffold_0     130584   130585 3.781283e-01
+#&gt;     3: scaffold_0     260470   260471 3.602315e-02
+#&gt;     4: scaffold_0     390355   390356 7.618749e-01
+#&gt;     5: scaffold_0     520241   520242 2.979971e-08
+#&gt;    ---                                            
+#&gt;  9996: scaffold_9   82991563 82991564 8.051006e-03
+#&gt;  9997: scaffold_9   83074966 83074967 7.048433e-03
+#&gt;  9998: scaffold_9   83158369 83158370 1.012360e-07
+#&gt;  9999: scaffold_9   83241772 83241773 3.977189e-08
+#&gt; 10000: scaffold_9   83325173 83325174 3.980538e-08
+</code></pre>
+
+<p>Exercise for the reader (easy): notice that the code above for
+creating <code>info.dt</code> involves repetition in the pattern and group names
+(<code>alignment</code>, <code>Alignment</code>, <code>chrom</code>, <code>Chromosome</code>). Re-write the
+pattern using <code>nc::field</code> in order to eliminate that repetition.</p>
+
+<p>Exercise for the reader (hard): notice that Chromosome is only the
+first field &ndash; how could you extract the other fields as well? Hint:
+use <code>nc::field</code> in a helper function in order to avoid repetition.</p>
+
+</body>
+
+</html>

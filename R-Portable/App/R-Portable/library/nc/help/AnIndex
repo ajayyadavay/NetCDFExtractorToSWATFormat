@@ -1,0 +1,16 @@
+apply_type_funs	apply_type_funs
+capture_all_str	capture_all_str
+capture_df_names	capture_df_names
+capture_first_df	capture_first_df
+capture_first_vec	capture_first_vec
+capture_melt_multiple	capture_melt_multiple
+capture_melt_single	capture_melt_single
+field	field
+group	group
+nc	capture_first_vec
+only_captures	only_captures
+stop_for_capture_same_as_id	stop_for_capture_same_as_id
+stop_for_engine	stop_for_engine
+stop_for_subject	stop_for_subject
+try_or_stop_print_pattern	try_or_stop_print_pattern
+var_args_list	var_args_list

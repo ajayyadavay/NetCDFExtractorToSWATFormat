@@ -1,0 +1,18 @@
+apply_type_funs         apply type funs
+capture_all_str         Capture all matches in a single subject string
+capture_df_names        capture df names
+capture_first_df        Capture first match in columns of a data.frame
+capture_first_vec       Capture first match in each character vector
+                        element
+capture_melt_multiple   Capture and melt into multiple columns
+capture_melt_single     Capture and melt into a single column
+field                   Capture a field
+group                   Capture group
+only_captures           only captures
+stop_for_capture_same_as_id
+                        stop for capture same as id
+stop_for_engine         stop for engine
+stop_for_subject        stop for subject
+try_or_stop_print_pattern
+                        try or stop print pattern
+var_args_list           var args list

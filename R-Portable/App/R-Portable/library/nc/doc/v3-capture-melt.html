@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Capture melt</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{vignette 3: capture melt}
+-->
+
+<h1>Capture melt</h1>
+
+<p>This vignette explains how to use functions for &ldquo;melting&rdquo; wide
+data tables, i.e. converting to tall data tables:</p>
+
+<ul>
+<li><code>nc::capture_melt_single</code> is useful when you have a wide data table
+with lots of columns, all of the same type, that you would like to
+melt into a single result/output column.</li>
+<li><code>nc::capture_melt_multiple</code> is useful when you have a wide
+data table with columns of different types that you would like to
+melt into multiple result/output columns.</li>
+</ul>
+
+<p>Both are useful mainly in the case when you want to use a regular
+expression to specify both (1) the set of input columns to reshape and
+(2) some information to extract from those column names. To clarify
+the discussion we introduce the following three terms:</p>
+
+<ul>
+<li>Reshape columns contain the data which are present in equal amounts
+in the input and output, but in fewer columns in the output.
+These are <code>measure.vars</code> in reshape2/data.table.</li>
+<li>Copy columns contain data which are copied from a single row of the
+input into several rows of the output. These are <code>id.vars</code>
+in reshape2/data.table.</li>
+<li>Capture columns are only present in the output, and contain data
+extracted from the names of the input reshape columns,
+using a capturing regular expression.
+As far as I know, <code>tidyr::pivot_longer</code> is the only other
+data reshaping function which directly supports
+capture columns.</li>
+</ul>
+
+<h2>Capture data.frame column names and melt matching columns</h2>
+
+<p>Sometimes you want to melt a &ldquo;wide&rdquo; data table which has several
+distinct pieces of information encoded in each column name. One
+example is the familiar iris data, which have flower part and
+measurement dimension encoded in each of four column names:</p>
+
+<pre><code class="r">library(data.table)
+(iris.dt &lt;- data.table(i=1:nrow(iris), iris[,1:4], Species=paste(iris$Species)))
+#&gt;        i Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+#&gt;   1:   1          5.1         3.5          1.4         0.2    setosa
+#&gt;   2:   2          4.9         3.0          1.4         0.2    setosa
+#&gt;   3:   3          4.7         3.2          1.3         0.2    setosa
+#&gt;   4:   4          4.6         3.1          1.5         0.2    setosa
+#&gt;   5:   5          5.0         3.6          1.4         0.2    setosa
+#&gt;  ---                                                                
+#&gt; 146: 146          6.7         3.0          5.2         2.3 virginica
+#&gt; 147: 147          6.3         2.5          5.0         1.9 virginica
+#&gt; 148: 148          6.5         3.0          5.2         2.0 virginica
+#&gt; 149: 149          6.2         3.4          5.4         2.3 virginica
+#&gt; 150: 150          5.9         3.0          5.1         1.8 virginica
+</code></pre>
+
+<p>Those four reshape column names can be specified via a regex in
+<code>nc::capture_melt_single</code>. The first argument is the input data table
+to reshape, and the subsequent arguments are interpreted as a pattern
+which is passed to <code>nc::capture_first_vec</code>. Any input column names
+which match the specified regex will be passed as <code>measure.vars</code> to
+<code>melt</code>:</p>
+
+<pre><code class="r">(iris.tall &lt;- nc::capture_melt_single(
+  iris.dt,
+  part=&quot;.*&quot;,
+  &quot;[.]&quot;,
+  dim=&quot;.*&quot;))
+#&gt;        i   Species  part    dim value
+#&gt;   1:   1    setosa Sepal Length   5.1
+#&gt;   2:   2    setosa Sepal Length   4.9
+#&gt;   3:   3    setosa Sepal Length   4.7
+#&gt;   4:   4    setosa Sepal Length   4.6
+#&gt;   5:   5    setosa Sepal Length   5.0
+#&gt;  ---                                 
+#&gt; 596: 146 virginica Petal  Width   2.3
+#&gt; 597: 147 virginica Petal  Width   1.9
+#&gt; 598: 148 virginica Petal  Width   2.0
+#&gt; 599: 149 virginica Petal  Width   2.3
+#&gt; 600: 150 virginica Petal  Width   1.8
+</code></pre>
+
+<p>The output comes from joining the result of <code>nc::capture_first_vec</code> to
+the result of <code>melt</code>. Note the output has two copy columns (i,
+Species), one reshape column (value), and two capture columns (part,
+dim).</p>
+
+<p>After the data have
+been converted to the tall table above, we can do a <code>dcast</code> to get a
+wider data table:</p>
+
+<pre><code class="r">(iris.part.cols &lt;- dcast(
+  iris.tall,
+  i + Species + dim ~ part))
+#&gt;        i   Species    dim Petal Sepal
+#&gt;   1:   1    setosa Length   1.4   5.1
+#&gt;   2:   1    setosa  Width   0.2   3.5
+#&gt;   3:   2    setosa Length   1.4   4.9
+#&gt;   4:   2    setosa  Width   0.2   3.0
+#&gt;   5:   3    setosa Length   1.3   4.7
+#&gt;  ---                                 
+#&gt; 296: 148 virginica  Width   2.0   3.0
+#&gt; 297: 149 virginica Length   5.4   6.2
+#&gt; 298: 149 virginica  Width   2.3   3.4
+#&gt; 299: 150 virginica Length   5.1   5.9
+#&gt; 300: 150 virginica  Width   1.8   3.0
+</code></pre>
+
+<p>Rather than use <code>capture_melt_single</code> and then <code>dcast</code>, we could
+instead use <code>capture_melt_multiple</code> to get the same result:</p>
+
+<pre><code class="r">nc::capture_melt_multiple(
+  iris.dt,
+  column=&quot;.*&quot;,
+  &quot;[.]&quot;,
+  dim=&quot;.*&quot;)
+#&gt;        i   Species    dim Petal Sepal
+#&gt;   1:   1    setosa Length   1.4   5.1
+#&gt;   2:   2    setosa Length   1.4   4.9
+#&gt;   3:   3    setosa Length   1.3   4.7
+#&gt;   4:   4    setosa Length   1.5   4.6
+#&gt;   5:   5    setosa Length   1.4   5.0
+#&gt;  ---                                 
+#&gt; 296: 146 virginica  Width   2.3   3.0
+#&gt; 297: 147 virginica  Width   1.9   2.5
+#&gt; 298: 148 virginica  Width   2.0   3.0
+#&gt; 299: 149 virginica  Width   2.3   3.4
+#&gt; 300: 150 virginica  Width   1.8   3.0
+</code></pre>
+
+<p>Note that the reshaped table above contains two copy columns (i,
+Species), two reshape columns (Sepal, Petal), and one capture columns
+(dim).  These can help us visualize whether or not sepals are bigger
+than petals:</p>
+
+<pre><code class="r">library(ggplot2)
+ggplot()+
+  theme_bw()+
+  theme(panel.spacing=grid::unit(0, &quot;lines&quot;))+
+  facet_grid(dim ~ Species)+
+  coord_equal()+
+  geom_abline(slope=1, intercept=0, color=&quot;grey&quot;)+
+  geom_point(aes(
+    Petal, Sepal),
+    data=iris.part.cols)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAAH4CAMAAABUnipoAAABMlBMVEUAAAAAADoAAGYAOpAAZmYAZrYZGT8ZGWIZP4EZYp8aGhozMzM6AAA6ADo6AGY6OpA6kNs/GRk/Pz8/P4E/Yp8/gb1NTU1NTY5NbqtNjshiGRliGWJiP2JiP4FiYj9iYmJin9lmAABmADpmAGZmOpBmtttmtv9uTY5ubqtuq6tuq+SBPxmBP2KBYj+BvdmOTU2OTY6ObquOjk2OyP+QOgCQOjqQ2/+fYhmfYj+fYmKfgT+f2Z+f2b2f2dmrbk2r5P+2ZgC2//+9gT+9vb29vdm92Z+92b292dm+vr7Ijk3Ijm7Ijo7I///Zn2LZvYHZvb3Z2Z/Z2b3Z2dnbkDrb25Db/7bb/9vb///kq27kq47k/8jk///r6+v/tmb/yI7/25D/5Kv//7b//8j//9v//+T///8BIAXcAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO2dC5scxXWGNyYga0Vi4ngHASaR7GQNCwGLFcJJLFnISWgFLZFEEjZIWnSb//8X0pe59ExXn67LuVX1OQ9IKx3V9Lzd79RW9/R8e7C0siqoDqSfgJUVZpnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkWVCW1VVJnQVkUVLPQVKyudFSn045LL6PItE9pRRpdvmdCOMrp8y4R2lNHlWya0o4wu3zKhHWV0+VYGQv/XN4wba4v1kJ8dub8mKwa6LcfqKxawtvQL/fDDsoXuVylCC5ZWoR++f3jpdv3Lz7+5d3j50Sf17+3ffPc3h299Rr1twkNevzoffdpxnf3y0r82SGdHNd6l2y1j+3Xbuk32FGiF7gDPjlq6t/7uWv3V4RaS4fBpFfretceP/q3+5eyo3kX3jh7fO2r/pl5+1L9TFyHdHz777lePW66zyx1k/dXR47PLLePZUffbZbonQD1Dt4ArukefXFt9tYJkOHxaha4nsbc+++rw8PByLfQfPnv83a/av6lf54dZC33WvDBbrvoIt0jt3zQi1IxnR6vf6J4AtdAtTutvjbIyufmthWQ4fFqFfrzaNe03sXbaav+m3klfZS30w1//+nY3S3XWNge8/uq7v/2X/gydsdAt4Erj+lhthG4h/4n+8GkV+t5ht4Y+rBdf3Rq6/Zt6Qfb39CdOlHRfXW6//Ry2B7pbXtYzdvu9Z7uGzljoFrD1t6b85VboFpLh8GkVWrSMDqPaGZppW9syoR1ldBjVXsth2ta2TGhHGV2+ZUI7yujyLRPaUUaXb8UKbWWVTfkI3f32FPo3YJOui/DAPnT5sqfTCbH70Y1N2ia0yoNqQk90TWhH14RWyY4v9Os7i6tPumFY28fvmtATXRN6Uxcny/PTbhjW9vG7JvRE14Te1Ero5sTxaclldPlW2Br6fHGyeh1gvaDwuzZDT3RLmKEPhnrGzNDnJ81/7bCw7XN2TeiJbgFCHxwMjY4S+nR58V43LGj7rF0TeqJrQm/q5eeLdx90w4K2z9o1oSe6BQiNteTYlgmdL3sJQo93TWhH14RWyf7UMTF3f9P8akKPd01olexPh0vn7m/aX03o8a4JrZLdhI7tmtAq2QdLjvqPtuTw6ZrQKtn3m7sTtgk93jWhVbKb0LFdE1ol+6C5swIxoce7JrRKdj86E3rYNaFVspvQsV0TWiW7642VwVAT2tE1oVWyO65DD4ea0I6uCa2S3YSO7ZrQKtmf9t5GGR1qQju6JrRK9lVzZJ42oce7JrRKdhM6tmtC62LfrDRsyRHXNaFVsW9vqbOTwqhuVbTQCHSKha5M6EG3KnqGxqATWHJs/oOHVjZDD7pV0UsOFDp+9v4t/MDQypYcg269TwoWGodOq9AtnQm90232iUKht99rkzaLRCdw3HufSRkd2tGZ0P1uu0/0Cd07G0rZLBad0HH3o4sUWjqTj6aq7jd1dI3Q6Y+ilQ6n1nQ2Q2+rWnXVzdDDz4JGPDAeHSX75lvR8As/OhN6U9VSrdBtTZ8ZMdERsm8WV8MvPOlM6HVVy5KFxqTTJ3SPzoReVbXULfTqfYXIzaLScS05erduwOh9OhO6q6rX1Sj0eqKK2ywuHRN779oO/M1ph86Ebqvqd4sTGplOmdC7dCZ0U9VOV43QI99/Qx8Ym46YfY+6lRlYcuzRmdDLzT7RJjR0hhTwwOh0tOx9xoN1jQ/dpzOht/ukTKHx6TQJPaAzobf7RJvQ+x/VWMYsOQjouJYcy+VmyTE2dEhnQleDrhahe+nH0ZuloBM67n50sxe6GnYLEpqETo3QLrq5C105ulqEdl3ZCNssDR0lu2t9NbbkcNLNXOjK1VUjdFsJMzQRHSF7/5OD6y/GTgrddPMWunJ2SxGaik6H0CN0sxa6cnd1CD28xBG4WTI6+iXHLrtzyTFGN2eh9/eJKqFdZ4RBm6WjY2Tv4/vRzVjowT4pSmhCOgVCj9PNV+jhPlEl9P4332XYJ1Yo6WjYnbw9n/uvbIButkI79okuoQfveIfc4E9KR8K+eZf7YO8vh1+CdHMV2rVPyhGalk5aaJBupkI794kuoROWHMR0BOzDtK/Bm0qwzzMX2r1PVAmdcFJITYfPPrzU7Liv0I9ulkKP7JNChCanExV6im6OQo/tExVCD7/n7pzsT2+Wno5sydHvDu9j8aObodCj+0SD0MOZafdUaXKzDHRkJ4WD7uA69DTd/IQe3yclCM1BJye0B12I0K/vLK4+6YZ5PHelQgP7RIPQ+59JGSw5oM+sMNGRLTmGbLtLDh+6EKHPT5v/2mEez12n0NA+0SD0+IXYkb/YeWAeOqqTQpDNly5E6G+/aGfoK3XJJk3GV+XzjyTpmoM6/seJIFL1dGPVUYFsvnQhQt8/XV6cdK8D6OW29GgKTRCV1wMrWHIMPxW7vocSmMS46GiWHMvhvbI75UkXNEM/yFzoyu+B5a9Du08NJ8ay0RGyj686fOkC19AXOa+hK88HzlNoPjoJob3piK9yjH4HEdifFdjtjZUTenhLQ78FjmWko3wxj/tMIPS2fIUe/w7Cvz8rsNsfKya0844zv7GcdPwzdADdbISuwO7O2AyFZqVjFzqEjlbo8bsBufdnBXZ3x/IK3T+CY3dRTj0yLx2Z0CNXOYLoiIXePtW9K+fM+7MCu3tjWYUe3k/Xn6T97rZjpqMSGlpv+D7wTITez6iEx+YmNDcdr9CBdExCyy45BhmV8Fj2JcfOAsMdhwU8MjsdjdDwesP3gWdxt90woxIey31SuDsfh87Q/HRkJ8QYdDMQ2pFRCY/NSmgBOkahw+nohXZ/K+Hbn66MSngs+2W7/sWNvc/GTi05JOjIlhwYdORCj1xYZdufzoxKeKzAdejNXurvK4/9JkLH9p05hq50od0ZlfDYfISWoeMSOoqOa8khdJVjJKMSHivxTqFjF00vOYTomISOo2OZocWuQ49lVMJj5e+22xR4UihFx8MeSVe00KMZlfDYTIQWo2Nhj6WrDX74/mFTl26TLTn2fvV+djFdcJ9kJzSw5JCj42CPpmuE/vAb8uvQfvckYHTBfZKf0KNdQToG9ni6coWGMirhsTkILUlHz55AxyK0xxsEaF1wn2gX2vXmgnOsKB250Cl0jcJn9Qr6GqHQrkvR1PsTzqiEx4re4O81VpaOWugkumaG/uD2P//x09tFCT2RUQl31QstTEcsdBpdt+SgFdpxiwLx/pzKqIS7xEIDH7Dy2zPSdLRCJ9I1Ct87+opjybHz7i7p/pzMqIS7tEKPfC7D74GbrjgdqdCpdPRvffMLPZ1RCXd1Cy1PRyl0Mt36jZVLNEuOsbsiKfenR0Yl3OVacgxv3vDYrAI6QqHT6VYW9y7dYccY7E7PQc8upuuVUQl3mU4Kh7fXeYzVQEcnNALdyuJHgSeFAamS/fIcllJeGZVwMeVzdjskbLfkQxdTGHTrJcdlmjX0cL2x+4KCxkZ1/TIq4S7XZbvwJcdEYmF2M/QuOwod40lh+LML73pmVMJd1iVHyNipxMLchN7dAzh0jx9/dVTOO4W+GZVwV6vQk4mFWQuNRFefDv77B7ebdws53ljZ/JFmf3pnVMJd3iWH99jpxMLchF7u+Ywk9H/UJ4REVzm62judJ7sO7Z9RCXd13m3nkViYndDbQqPrbk0iuw7dPRaP0AEZlXBXpdA+iYX5Co1HF3nZLmD7w49/0iw5QjIq4a5Gob0SC7MVGpGukfmTdo6+RiP07sQc9uxCukEZlXBXodB+iYW5Co1Jt3qXsJ6h/5y10GEZlXBXn9CeiYWZCo1KR3Ydur/AoH9jJTCjEu6qE9o3sTBPoXHpHhN96rs/H9Nfhw7NqIS72oT2TizMUmhkOqqbk1iFDs6ohLvKhPZPLMxRaGw6sqscwyVH+LPz7IZnVMJdXUIHJBZmKDQ6HfHNSTF3LIR2IzIq4a4qoUMSC/MTGp+O/OYkx3LD+9l5dWMyKuGuJqGDEguzE5qAjkloujjdqIxKuKtI6LDEwtyEpqDLXei4jEq4q0fowMTCzIQmoaMUevTnKvg+u+luZEYl3FUjdGhiYV5C09ARCg1+vBlnf8ZmVMJdLUIHJxZmJTQRXdZCR2dUwl0lQocnFuYkNBUd/ZIj4dlNdOMzKuGuDqEjEgszEpqMjvykkK6bkFEJd1UIHZNYmI/QdHT5Cp2SUQl3NQgdlViYjdCEdNkKnZRRCXcVCB2XWJiL0JR0uQqdllEJd+WFjkwszERoUrpMhU7MqIS74kLHJhbmITQtXZjQzz960g3D2n5kNzWjEu5KCx2dWJiF0MR0QUK/vnNVhdDJGZVwV1jo+MTCHISmpgsS+vzjG7XQV+pKT9VLKIRMP7CMjq7I6UKEfv7RjzcUzNBwHmPuM3RK2qT+GZqeLkTo88VicdINw9p+RBcjoxLuSgqdlDapXmgGurCTwpfyMzRKRiXcFRQ6LW1Su9AcdLkJjZNRCXflhE5Mm1QuNAtdZtehkTIq4a6Y0Klpk7qF5qHLS2isjEq4KyV0ctqkaqGZ6LISGi2jEu4KCZ2eNqlZaC66nITGy6iEuzJCI6RNKhaajS4joREzKuGuiNAYaZN6heajy0dozIxKuCshNErapFqhGemyERo1oxLuCgiNkzapVWhOulyExs2ohLv8QiOlTSoVmpUuE6GRMyrhLrvQWGmTOoXmpctDaOyMSrjLLTRa2qRKoZnpshAaPaMS7jILjZc2qVFobrochMbPqIS7vEIjpk0qFJqdLgOhCTIq4S6r0Jhpk/qE5qfTLzRFRiXc5RQaNW1SndACdOqFJsmohLuMQuOmTWoTWoJOu9A0GZVwl09o5LRJZUKL0CkXmiijEu6yCY2dNqlLaBk63UJTZVTCXS6h0dMmVQktRKdaaLKMSrjLJDR+2qQmoaXoNAtNl1EJd3mEJkibVCS0GJ1ioQkzKuEui9AUaZN6hJaj0ys0ZUYl3OUQmiRtUo3QgnRqhSbNqIS7DELTpE1qEVqSTqvQtBmVcJdeaKK0SSVCi9IpFZo4oxLukgsdT5eD0LJ0kUITZ0hSZ1TCZXQpJUyncoYmz6iEu8QzdAqd/hlamk6j0PQZlXCXVugkOvVCi9MpFJohoxLukgqdRqddaHk6fUJzZFTCXUqhE+mUC62ATp3QLBmVcJdQ6FQ63UJroNMmNE9GJdylEzqZTrXQKuiUCc2UUQl3yYROp9MstA46XUJzZVTCXSqhEegUC62ETpXQbBmVcJdIaAw6vUJrodMkNF9GJdylERqFTq3QaugUCc2YUQl3SYTGodMqtB46PUJzZlTCXQqhkeiUCq2ITo3QrBmVcJdAaCw6nUJrotMiNG9GJdzFFxqNTqXQquiUCM2cUQl30YXGo9MotC46HUJzZ1TCXWyhEekUCq2MToXQ7BmVcBdZaEw6fUJro9MgNH9GJdzFFRqVTp3Q6ugUCC2QUQl3UYXGpdMmtD46eaElMirhLqbQyHTKhFZIJy60SEYl3EUUGptOl9Aa6aSFlsmohLt4QqPTqRJaJZ2w0EIZlXAXTWh8Ok1C66STFVoqoxLuYglNQKdIaKV0okKLZVTCXSShKej0CK2VTlJouYxKuIsjNAmdGqHV0k0I/eL6QVs/+3pnNIrQghmVcBdFaBo6LULrpQuZoV9+vnj3QTcMYfuSGZVwF0NoIjolQiummxb6+80MfX66PD/phqVvXzSjEu4iCE1Fp0NozXSTQr/4za27x8/eXP3p4rQeU1dySqRsRiVcRgeXarppoX/79ffv1L+0f3h540n3Okh9QQlnVMLd5DmMjk7DDD2Rx6h9hn715a1nb66Efvn7B6thiduXzqiEu6mHnJBOgdBTeYzahV4+e+N/bx6803z1/Hcrn1OFFs+ohLuJh5ySTl7oyTxG9UJv6/5iscA4KZTPqIS7aYeclE5c6Ok8RvVCN5ei3/hhd3SS0AoyKuFu0iGnpZMW2iOPUbvQr24eN8uOXaNThNaQUQl3Uw45MZ2w0D55jNqFbs8H11c51pUgtIqMSribcMip6WSF9spj1C708m59Qri5Dr2qeKF1ZFTC3fhDTk4nKrRfHqN2oZ13c1yxssqmdoV2FlngeXpX+qQQ60mQbZYs8Dx9KNtVjn/88tbuaBM6X/a5C/3q5vHd459+0VzleH1ncRXprW/V+9OEVsmOd5Xj7nF3lePipLnhrh2GtX38rgk90Z270O0M3V2HXgndrLOlb6oiLaPLtzzfKVxd4jhfvfNtM3TG7HOfoXt1foJ4gz9V14Se6M5c6BfXj5d3VzN0vd64eK8bhrV9/K4JPdGdudB3j5sbObo1NO5nCom6JvREd95CN5c3vn8H814O6q4JPdGdvdCvvrxlQvM/CbLNzlvoVzePf/rrepJ+c3e0CZ0v+7yFXv709sHxq5uoN/jTdk3oie7MhXaXCZ0vuwntKBM6X3YT2lEmdL7sJrSjTOh82U1oR5nQ+bKb0I4yofNlN6EdZULny25CO8qEzpfdhHaUCZ0vuwntKBM6X3YT2lEmdL7sJrSjTOh82U1oR5nQ+bKb0I4yofNlN6EdZULny25CO6pooauihUagUyx0ZUIPulXRMzQGnV6hK5uhB92q6CUHCp1aoStbcgy6Tah3uULj0GkVuqUzoXe6bUh9sUIj0SkVuqMzofvd7oculCo0Fp1OoVd0kUJLh0zS1OqHWBtdhrWmsxl6W+sf0V3mDI1Hp3GG3tCZ0Jva/IjuIoVGpFMo9JbOhF7X9kd0lyg0Jp0+oXt0JvSqej+iu0ChUenUCd2nM6G76v+I7vKExqXTJvQOnQnd1s6P6C5OaGQ6ZULv0pnQTe3+iO7ShMam0yX0Hp0JvRz8iO7ChEanUyX0Pp0JPfyh7GUJjU+nSegBnQm93SdFCk1Ap0joIZ0JXQ26JQlNQadHaAfd7IWuht2ChCahUyO0i27uQleObjlC09BpEdpJN3OhK1e3GKGJ6JQI7aabt9CVs1uK0FR0OoQeoZu10JW7W4jQZHQqhB6jm7PQ+/ukLKHp6DQIPUo3Y6EH+6QooQnpFAg9TjdfoYf7pCShKenkhQboZiu0Y58UJDQpnbjQEN1chXbtk3KEpqWTFhqkm6nQzn1SjNDEdMJCw3TzFNq9T0oRmppOVugJulkKPbJPChGanE5U6Cm6OQo9tk/KEJqeTlLoSboZCj26T4oQmoFOUOhpuvkJPb5PShCag05OaA+6EKFf31lcfdIN89u+RHdqKLBPChCahU5MaB+6EKHPT5v/2mFe2xfpTgyF9kn+QvPQSQntRRci9LdftDP0lbpkkybjq/L5R0ansvzoQoS+f7q8OOleBz4vKKgpNEFUXg+c6wzNRSfD7kkXNEM/yFzoyu+BMxWajU6E3ZcucA19kfMauvJ84DyF5qOTYPemm9FVjgrs9sZmKTQjnQC7P918rkNXYLc/NkehOen42QPoZiN0BXZ3xmYoNCsdO3sI3VyErsDu7tj8hOal42YPopuJ0BXY3RubndDMdMzsYXTzEHo/oxIem5vQ3HS87IF0sxB6kFEJj81MaHY6VvZQujkIPcyohMfmJTQ/HSd7MN0MhHZkVMJjsxJagI6RPZyufKFdGZXw2JyElqDjY4+gK15oZ0YlPDYjoUXo2Nhj6EoX2p1RCY/NR2gZOi72KLrChR7JqITHZiO0EB0Texxd2UKPZVTCY3MRWoqOhz2SrmihRzMq4bGZCC1Gx8IeS1ey0OMZlfDYPISWo+Ngj6Zba/zok0u3CxMayKiEx2YhtCAdA3s8Xevw2eHhW5+VNkNDGZXw2ByElqSjZ0+gqw1++P7lApccYEYlPDYDoUXpyNlT6NYz9HrBUYrQcEYlPFa/0LJ01OxJdGuNH75f1Bp6IqMS7qoXWpiOmD2Nbj1DH/78m4Jm6KmMSrirXWhpOlr2RLoi19CTGZVwV7nQ4nSk7Kl0Ja6hpzMq4a5uoeXpKNmT6QpcQ3tkVMJd1UIroCNkT6drXa6X0Jf++GmI0NTBfAnllekHltFJFQJdcW99g5mr2c/QcGJh7jM0Bt36Ise1QoT2y6iEu3qFnkgszFxoFLpmyfHB7fb/EoT2zKiEu2qFnkoszFtoHLrmvqR69fzww29KENo3oxLuahV6MrEwa6GR6NYnhdsLdxkL7Z1RCXeVCj2dWJiz0Fh0q2n50acFLDn8Myrhrk6hPRILMxYaja6R+ZN2hr6Wu9ABGZVwV6XQPomF+QqNR9csOer1cz1D/zlzoUMyKuGuRqG9EguzFRqRrpjr0EEZlXBXodB+iYW5Co1JV8pJYVhGJdzVJ7RnYmGmQqPSrW/lyPyyXWBGJdxVJ7RvYmGeQuPSlXGVIzSjEu5qE9o7sTBLoZHp1kuO7S3RGQodnFEJd5UJ7Z9YmKPQ2HQlnBSGZ1TCXV1CByQWZig0Ol0BQkdkVMJdVUKHJBbmJzQ+HZbQB4MBXELHZFTCXU1CByUWZic0AR2S0AcHA6OZhI7KqIS7ioQOSyzMTWgKutyFjsuohLt6hA5MLMxMaBK6zJcckRmVcFeN0KGJhXkJTUOX90lhbEYl3NUidHBiYVZCE9FlLXR0RiXcVSJ0eGJhTkJT0aULPVxsBGw/qRufUQl3dQgdkViYkdBkdMlCO04HA7af0k3IqIS7KoSOSSzMR2g6unyFTsmohLsahI5KLMxGaEK6RKFrmYWWHEkZlXBXgdBxiYW5CE1Jlyb06PTsu/3oblpGJdyVFzoysTAToUnpMhU6MaMS7ooLHZtYmIfQtHRhQj//6Ek3bP0gQkuO1IxKuCstdHRiYRZCE9MFCf36ztU9oWVOCpMzKuGusNBgOl/2QlPTBQl9/vGNWugrdW3jHhuhkzMjwyo9oxIu2XxOo0upIKGff/TjjcEMvVpyMN7LgZBRCXdFZ+iUtEn9MzQ9XYjQ54vF4qQbtr8JxrvtMDIq4a6k0Elpk+qFZqALOyl86Zihu3/OJjRKRiXcFRQ6LW1Su9AcdOlCdxc6uJYcOBmVcFdO6MS0SSa6sUXm1FAWurTr0Mtubu4qZvuhXaSMSrgrJnRq2iQPXXesw69u8dDlJTRWRiXclRI6OW1StdBMdMlCcy450DIq4a6Q0Olpk5qXHFx0KDM000khXkYl3JURGiFtUvFJIRtdRkIjZlTCXRGhMdIm9QrNR5co9GaxQb/kwMyohLsSQqOkTYoIvX/khenShHafDgZs37+LmlEJdwWExkmblBB6cPyF6XIRGjejEu7yC42UNqlUaFY6lCXHBqnPhio0ckYl3GUXGittUueSg5cO6zp0N6j/asUUGjujEu5yC42WNqnypJCZLguh0TMq4S6z0HhpkxqF5qZLFnpn1UGz5MDPqIS7cYc8lh0xbZJbaOf5kzAd1gxNeB2aIKMS7kYd8tjvTphpk8xCu68ICNPpF5oioxLucgqNmjapTmgBOsQlx/T1yJguSUYl3GVccuCmTfIJvV5hOu7iEaZDmaG7EXuvVhyhaTIq4S7fDI2cNskmdA8WuA4tQqdcaKKMSrjLJjR22qQuoWXoUJYcXREsOagyKuFu6CHvrbhW+4CMTljozbWs3kWtsSWHEB3eDB21fbhLllEJdwMPee+ceP07GZ2s0Ht3VroPvTCdZqHpMirhLo/QBGmTioQWo0sUmjIKjDCjEu7GLTnWX3oOpUib5F9yjL2xIkeXJjTl3XaUGZVwN36G9t8MSdokzwy9OSkcvw4tSKdWaNKMSrjLIDRN2qQWoSXpUJYcTqXTzKLNqIS7/od8902l7W4goxMTun+vTo/aueQQpUOZoaGz3bhnR5xRCXe9D/lBv/qHl4xOSuj+6eAu9XCoLF2k0Kusxy0YboYkdUYlXN75nDuH1j+HNRO6fnVs21+B4y5Mp3LJQZ5RCXeJlxwpdNqWHMOR0nQar0PTZ1TC3ZBD7v7mS0an5KRwfKA4nUKhGTIq4S6p0Gl02oWWp0sWGv2NFY6MSrgbu+Tw2UwinYzQ/dt1xlZZbSmgSxc6afvDYsmohLuRVzl8NpNKJyL0hu5gr/a/PWug0yY0T0Yl3KUTOplOtdAq6JQJzZRRCXd96Ibn+x6fWEmn07zk0EGnS2iujEq460HXTU396XlnsiKjkz8pbDCdXSV0qoRmy6iEu0RCY9DpFVoLnSah+TIq4W7EkmO5nFxyoNAJCN3nWsE+HbbU0CkSmjGjEu4GzdC+m8Gh4xfaxfh00NJDp0dozoxKuEshNBKdUqEV0akRmjWjEu56LjnG1huuoVh0kkuO4fUcl8/SdFqE5s2ohLt+h7w/SU9dh0ajEzwpHL3orotOidDMGZVwF11oPDqNQuui0yE0d0Yl3PVfciyXPksORDpBocduXFFGp0Jo9oxKuOt5Ujh2Rrg/FJNOUmh3VxudBqH5MyrhLq7QqHTqhFZHhyJ02idWBDIq4W7EkmN8M7h02oTWR4chtHuuStgn+oXeuQEN2gwynTKhFdKJCy2SUQl3EYXGptMltEY66SWHTEYl3PW/l2M5cZUDnU5G6P3ju+qqpBM+KRTKqIS7ITO08490dCJCD74LdV2ddLJCS2VUwl0soQnoFAmtlE5UaLGMSrgbtORw/pGMTs+SQyudpNByGZVwN/20iYxOzUmhWjpBoQUzKuEuitA0dFqE1ksXIvTLzxfvPuiGIWxfMqMS7kYsOQYPRESnRGjFdCFCn58uz0+6YenbF82ohLvhJ4WDB6Ki0yG0ZrrAJcfFaT2mruSUSNmMSrg86BqhgXbmdBOlmi5M6Jc3nnSvg9QXlHBGJdxNXnLQ0WmYoXUGFTAAAAL2SURBVCfyGHOaoV/+/sFqWOL2pTMq4W7qISekUyD0VB5jRkI//93K51ShxTMq4W7iIaekkxd6Mo8xI6HvLxYLjJNC+YxKuJt2yEnpxIWezmPMSOhtJQmtIKMS7iYdclo6aaE98hhnJ7SGjEq4m3LIiemEhfbJY5yb0CoyKuFuwiGnppMV2iuPMU+hrayyKQ+h1177/CP0oVybNTqCsUI71YTm24zQZjN4inhDl55CW1nlUia0VVFlQlsVVSa0VVE1LfTrO4v3Ih98+0mBmHr+0ZO4gfUzvuo71OjGKgmPhc5Z00JfnCzvn8Y9+PaTAhH1+k4sWbNZ32dsdNB2YvF46Jw1LfT//anZL7F1Ef3szj++EblTvv3C/1VudEBF4/HQOWta6P9M2SkvY8Hqb1o/xo6tJyXvZ2x04xWNx0TnLNoZevNJgfA639zDGlzfPvB/xkY3WvF4THTOIl1Dbz8pEFPRE0S9CPP+Zml0Y5WEx0LnLNKrHPfjX6nLhJ3CdB2gbLo0PBY6Z9l1aKuiyoS2KqpMaKuiyoS2KqpMaKuiyoS2KqpMaNL66e2Dg7+41X394h9+WP3lL36Qe0allwlNWo27z974YfP17hdW+GVCk1bjbv3/s4ODN1/dPHjjh+/rL0xoyjKhSaubof+7/vXucf11/d+L335tQhOWCU1a3Rr6WRMz/U47W79d/9GEJiwTmrQ6d5+9ufr62c++fvEbE5qyTGjS6tz96a9uvbrZLDlqs5/ZDE1aJjRprdxtTgqXL66/8T/XD/7y+rEJTVgmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVRZUJbFVUmtFVR9f9FZ7y7GhwWqwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-5"/></p>
+
+<p>It is clear from the plot above that sepals are indeed both longer and
+wider than petals, on each measured plant.</p>
+
+<p>Another data set where it is useful to do column name pattern matching
+followed by melting is the World Health Organization data:</p>
+
+<pre><code class="r">data(who, package=&quot;tidyr&quot;)
+names(who)
+#&gt;  [1] &quot;country&quot;      &quot;iso2&quot;         &quot;iso3&quot;         &quot;year&quot;        
+#&gt;  [5] &quot;new_sp_m014&quot;  &quot;new_sp_m1524&quot; &quot;new_sp_m2534&quot; &quot;new_sp_m3544&quot;
+#&gt;  [9] &quot;new_sp_m4554&quot; &quot;new_sp_m5564&quot; &quot;new_sp_m65&quot;   &quot;new_sp_f014&quot; 
+#&gt; [13] &quot;new_sp_f1524&quot; &quot;new_sp_f2534&quot; &quot;new_sp_f3544&quot; &quot;new_sp_f4554&quot;
+#&gt; [17] &quot;new_sp_f5564&quot; &quot;new_sp_f65&quot;   &quot;new_sn_m014&quot;  &quot;new_sn_m1524&quot;
+#&gt; [21] &quot;new_sn_m2534&quot; &quot;new_sn_m3544&quot; &quot;new_sn_m4554&quot; &quot;new_sn_m5564&quot;
+#&gt; [25] &quot;new_sn_m65&quot;   &quot;new_sn_f014&quot;  &quot;new_sn_f1524&quot; &quot;new_sn_f2534&quot;
+#&gt; [29] &quot;new_sn_f3544&quot; &quot;new_sn_f4554&quot; &quot;new_sn_f5564&quot; &quot;new_sn_f65&quot;  
+#&gt; [33] &quot;new_ep_m014&quot;  &quot;new_ep_m1524&quot; &quot;new_ep_m2534&quot; &quot;new_ep_m3544&quot;
+#&gt; [37] &quot;new_ep_m4554&quot; &quot;new_ep_m5564&quot; &quot;new_ep_m65&quot;   &quot;new_ep_f014&quot; 
+#&gt; [41] &quot;new_ep_f1524&quot; &quot;new_ep_f2534&quot; &quot;new_ep_f3544&quot; &quot;new_ep_f4554&quot;
+#&gt; [45] &quot;new_ep_f5564&quot; &quot;new_ep_f65&quot;   &quot;newrel_m014&quot;  &quot;newrel_m1524&quot;
+#&gt; [49] &quot;newrel_m2534&quot; &quot;newrel_m3544&quot; &quot;newrel_m4554&quot; &quot;newrel_m5564&quot;
+#&gt; [53] &quot;newrel_m65&quot;   &quot;newrel_f014&quot;  &quot;newrel_f1524&quot; &quot;newrel_f2534&quot;
+#&gt; [57] &quot;newrel_f3544&quot; &quot;newrel_f4554&quot; &quot;newrel_f5564&quot; &quot;newrel_f65&quot;
+</code></pre>
+
+<p>Each column which starts with <code>new</code> has three distinct pieces of
+information encoded in its name: diagnosis type (e.g. sp or rel),
+gender (m or f), and age range (e.g. 5564 or 1524). We would like to
+use a regex to match these column names, then using the matching
+columns as measure.vars in a melt, then join the two results. </p>
+
+<pre><code class="r">new.diag.gender &lt;- list(
+  &quot;new_?&quot;,
+  diagnosis=&quot;.*&quot;,
+  &quot;_&quot;,
+  gender=&quot;.&quot;)
+nc::capture_melt_single(who, new.diag.gender, ages=&quot;.*&quot;)
+#&gt;                          country iso2 iso3 year diagnosis gender ages
+#&gt;     1:               Afghanistan   AF  AFG 1997        sp      m  014
+#&gt;     2:               Afghanistan   AF  AFG 1998        sp      m  014
+#&gt;     3:               Afghanistan   AF  AFG 1999        sp      m  014
+#&gt;     4:               Afghanistan   AF  AFG 2000        sp      m  014
+#&gt;     5:               Afghanistan   AF  AFG 2001        sp      m  014
+#&gt;    ---                                                               
+#&gt; 76042:                  Viet Nam   VN  VNM 2013       rel      f   65
+#&gt; 76043: Wallis and Futuna Islands   WF  WLF 2013       rel      f   65
+#&gt; 76044:                     Yemen   YE  YEM 2013       rel      f   65
+#&gt; 76045:                    Zambia   ZM  ZMB 2013       rel      f   65
+#&gt; 76046:                  Zimbabwe   ZW  ZWE 2013       rel      f   65
+#&gt;        value
+#&gt;     1:     0
+#&gt;     2:    30
+#&gt;     3:     8
+#&gt;     4:    52
+#&gt;     5:   129
+#&gt;    ---      
+#&gt; 76042:  3110
+#&gt; 76043:     2
+#&gt; 76044:   360
+#&gt; 76045:   669
+#&gt; 76046:   725
+</code></pre>
+
+<p>Note the output includes the new reshape column called <code>value</code> by
+default, as in <code>melt</code>. The input reshape column
+names which matched the specified pattern, and there is a new column
+for each group in that pattern. The following example shows how to
+rename the <code>value</code> column and use numeric type conversion functions:</p>
+
+<pre><code class="r">years.pattern &lt;- list(new.diag.gender, ages=list(
+  min.years=&quot;0|[0-9]{2}&quot;, as.numeric,
+  max.years=&quot;[0-9]{0,2}&quot;, function(x)ifelse(x==&quot;&quot;, Inf, as.numeric(x))))
+(who.typed &lt;- nc::capture_melt_single(
+  who, years.pattern,
+  value.name=&quot;count&quot;))
+#&gt;                          country iso2 iso3 year diagnosis gender ages
+#&gt;     1:               Afghanistan   AF  AFG 1997        sp      m  014
+#&gt;     2:               Afghanistan   AF  AFG 1998        sp      m  014
+#&gt;     3:               Afghanistan   AF  AFG 1999        sp      m  014
+#&gt;     4:               Afghanistan   AF  AFG 2000        sp      m  014
+#&gt;     5:               Afghanistan   AF  AFG 2001        sp      m  014
+#&gt;    ---                                                               
+#&gt; 76042:                  Viet Nam   VN  VNM 2013       rel      f   65
+#&gt; 76043: Wallis and Futuna Islands   WF  WLF 2013       rel      f   65
+#&gt; 76044:                     Yemen   YE  YEM 2013       rel      f   65
+#&gt; 76045:                    Zambia   ZM  ZMB 2013       rel      f   65
+#&gt; 76046:                  Zimbabwe   ZW  ZWE 2013       rel      f   65
+#&gt;        min.years max.years count
+#&gt;     1:         0        14     0
+#&gt;     2:         0        14    30
+#&gt;     3:         0        14     8
+#&gt;     4:         0        14    52
+#&gt;     5:         0        14   129
+#&gt;    ---                          
+#&gt; 76042:        65       Inf  3110
+#&gt; 76043:        65       Inf     2
+#&gt; 76044:        65       Inf   360
+#&gt; 76045:        65       Inf   669
+#&gt; 76046:        65       Inf   725
+str(who.typed)
+#&gt; Classes &#39;data.table&#39; and &#39;data.frame&#39;:   76046 obs. of  10 variables:
+#&gt;  $ country  : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
+#&gt;  $ iso2     : chr  &quot;AF&quot; &quot;AF&quot; &quot;AF&quot; &quot;AF&quot; ...
+#&gt;  $ iso3     : chr  &quot;AFG&quot; &quot;AFG&quot; &quot;AFG&quot; &quot;AFG&quot; ...
+#&gt;  $ year     : int  1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 ...
+#&gt;  $ diagnosis: chr  &quot;sp&quot; &quot;sp&quot; &quot;sp&quot; &quot;sp&quot; ...
+#&gt;  $ gender   : chr  &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot; ...
+#&gt;  $ ages     : chr  &quot;014&quot; &quot;014&quot; &quot;014&quot; &quot;014&quot; ...
+#&gt;  $ min.years: num  0 0 0 0 0 0 0 0 0 0 ...
+#&gt;  $ max.years: num  14 14 14 14 14 14 14 14 14 14 ...
+#&gt;  $ count    : int  0 30 8 52 129 90 127 139 151 193 ...
+#&gt;  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
+</code></pre>
+
+<p>The result above shows that </p>
+
+<ul>
+<li>non-character captured output columns can be obtained by specifying
+type conversion functions in the pattern.</li>
+<li><code>value.name</code> is used as the column name for the reshaped data in the output (as in <code>melt.data.table</code>).</li>
+</ul>
+
+<h2>Comparison with tidyr</h2>
+
+<p>The <code>nc::capture_melt_single</code> function was inspired by the <code>tidyr</code>
+package, which can accomplish the same computation via:</p>
+
+<pre><code class="r">tidyr::pivot_longer(
+  who, new_sp_m014:newrel_f65,
+  names_to=c(&quot;diagnosis&quot;, &quot;gender&quot;, &quot;ages&quot;),
+  names_pattern=&quot;new_?(.*)_(.)(.*)&quot;)
+#&gt; # A tibble: 405,440 x 8
+#&gt;    country     iso2  iso3   year diagnosis gender ages  value
+#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;
+#&gt;  1 Afghanistan AF    AFG    1980 sp        m      014      NA
+#&gt;  2 Afghanistan AF    AFG    1980 sp        m      1524     NA
+#&gt;  3 Afghanistan AF    AFG    1980 sp        m      2534     NA
+#&gt;  4 Afghanistan AF    AFG    1980 sp        m      3544     NA
+#&gt;  5 Afghanistan AF    AFG    1980 sp        m      4554     NA
+#&gt;  6 Afghanistan AF    AFG    1980 sp        m      5564     NA
+#&gt;  7 Afghanistan AF    AFG    1980 sp        m      65       NA
+#&gt;  8 Afghanistan AF    AFG    1980 sp        f      014      NA
+#&gt;  9 Afghanistan AF    AFG    1980 sp        f      1524     NA
+#&gt; 10 Afghanistan AF    AFG    1980 sp        f      2534     NA
+#&gt; # ... with 405,430 more rows
+</code></pre>
+
+<p>The syntax above is somewhat repetitive, since it requires specifying
+columns to melt as the second argument, and it also requires
+<code>names_pattern</code> which could be used to identify the columns to melt,
+e.g.</p>
+
+<pre><code class="r">names.pattern &lt;- &quot;new_?(.*)_(.)(.*)&quot;
+tidyr::pivot_longer(
+  who, grep(names.pattern, names(who)),
+  names_to=c(&quot;diagnosis&quot;, &quot;gender&quot;, &quot;ages&quot;),
+  names_pattern=names.pattern)
+#&gt; # A tibble: 405,440 x 8
+#&gt;    country     iso2  iso3   year diagnosis gender ages  value
+#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;
+#&gt;  1 Afghanistan AF    AFG    1980 sp        m      014      NA
+#&gt;  2 Afghanistan AF    AFG    1980 sp        m      1524     NA
+#&gt;  3 Afghanistan AF    AFG    1980 sp        m      2534     NA
+#&gt;  4 Afghanistan AF    AFG    1980 sp        m      3544     NA
+#&gt;  5 Afghanistan AF    AFG    1980 sp        m      4554     NA
+#&gt;  6 Afghanistan AF    AFG    1980 sp        m      5564     NA
+#&gt;  7 Afghanistan AF    AFG    1980 sp        m      65       NA
+#&gt;  8 Afghanistan AF    AFG    1980 sp        f      014      NA
+#&gt;  9 Afghanistan AF    AFG    1980 sp        f      1524     NA
+#&gt; 10 Afghanistan AF    AFG    1980 sp        f      2534     NA
+#&gt; # ... with 405,430 more rows
+</code></pre>
+
+<p>To accomplish the type conversion using tidyr we need to do a
+post-processing step, which requires additional repetition of the
+column names we want to convert:</p>
+
+<pre><code class="r">(years.pattern.str &lt;- nc::var_args_list(years.pattern)$pattern)
+#&gt; [1] &quot;(?:(?:new_?(.*)_(.))((0|[0-9]{2})([0-9]{0,2})))&quot;
+(tidyr.nona &lt;- tidyr::pivot_longer(
+  who,
+  grep(years.pattern.str, names(who)),
+  names_to=c(&quot;diagnosis&quot;, &quot;gender&quot;, &quot;ages&quot;, &quot;ymin&quot;, &quot;ymax&quot;),
+  values_drop_na=TRUE,
+  names_pattern=years.pattern.str))
+#&gt; # A tibble: 76,046 x 10
+#&gt;    country     iso2  iso3   year diagnosis gender ages  ymin  ymax  value
+#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+#&gt;  1 Afghanistan AF    AFG    1997 sp        m      014   0     14        0
+#&gt;  2 Afghanistan AF    AFG    1997 sp        m      1524  15    24       10
+#&gt;  3 Afghanistan AF    AFG    1997 sp        m      2534  25    34        6
+#&gt;  4 Afghanistan AF    AFG    1997 sp        m      3544  35    44        3
+#&gt;  5 Afghanistan AF    AFG    1997 sp        m      4554  45    54        5
+#&gt;  6 Afghanistan AF    AFG    1997 sp        m      5564  55    64        2
+#&gt;  7 Afghanistan AF    AFG    1997 sp        m      65    65    &quot;&quot;        0
+#&gt;  8 Afghanistan AF    AFG    1997 sp        f      014   0     14        5
+#&gt;  9 Afghanistan AF    AFG    1997 sp        f      1524  15    24       38
+#&gt; 10 Afghanistan AF    AFG    1997 sp        f      2534  25    34       36
+#&gt; # ... with 76,036 more rows
+tidyr.typed &lt;- transform(
+  tidyr.nona,
+  min.years=as.numeric(ymin),
+  max.years=ifelse(is.na(ymax), Inf, as.numeric(ymax)))
+str(tidyr.typed)
+#&gt; &#39;data.frame&#39;:    76046 obs. of  12 variables:
+#&gt;  $ country  : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
+#&gt;  $ iso2     : chr  &quot;AF&quot; &quot;AF&quot; &quot;AF&quot; &quot;AF&quot; ...
+#&gt;  $ iso3     : chr  &quot;AFG&quot; &quot;AFG&quot; &quot;AFG&quot; &quot;AFG&quot; ...
+#&gt;  $ year     : int  1997 1997 1997 1997 1997 1997 1997 1997 1997 1997 ...
+#&gt;  $ diagnosis: chr  &quot;sp&quot; &quot;sp&quot; &quot;sp&quot; &quot;sp&quot; ...
+#&gt;  $ gender   : chr  &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot; ...
+#&gt;  $ ages     : chr  &quot;014&quot; &quot;1524&quot; &quot;2534&quot; &quot;3544&quot; ...
+#&gt;  $ ymin     : chr  &quot;0&quot; &quot;15&quot; &quot;25&quot; &quot;35&quot; ...
+#&gt;  $ ymax     : chr  &quot;14&quot; &quot;24&quot; &quot;34&quot; &quot;44&quot; ...
+#&gt;  $ value    : int  0 10 6 3 5 2 0 5 38 36 ...
+#&gt;  $ min.years: num  0 15 25 35 45 55 65 0 15 25 ...
+#&gt;  $ max.years: num  14 24 34 44 54 64 NA 14 24 34 ...
+</code></pre>
+
+<p>In conclusion <code>nc::capture_melt_single</code> provides an alternative which
+(1) makes it easier to define complex patterns (2) supports type
+conversion without a post-processing step, and (3) reduces repetition
+in user code.</p>
+
+<h2>Melting columns of different types into multiple result columns</h2>
+
+<p>In the previous sections we discussed methods for melting wide data
+columns that all have the same type. Sometimes wide data have columns
+of different types that we want to melt. The example below is taken
+from a data.table vignette,</p>
+
+<pre><code class="r">family.dt &lt;- fread(text=&quot;
+family_id age_mother dob_child1 dob_child2 dob_child3 gender_child1 gender_child2 gender_child3
+1         30 1998-11-26 2000-01-29         NA             1             2            NA
+2         27 1996-06-22         NA         NA             2            NA            NA
+3         26 2002-07-11 2004-04-05 2007-09-02             2             2             1
+4         32 2004-10-10 2009-08-27 2012-07-21             1             1             1
+5         29 2000-12-05 2005-02-28         NA             2             1            NA&quot;)
+</code></pre>
+
+<p>The data table above has one row for each family, and two columns for
+each child. One column is the date of birth (character), the other is
+the gender (coded as an integer). We can use standard data.table
+functions to melt these data into a tall table with one row for each
+child:</p>
+
+<pre><code class="r">melt(family.dt, measure.vars=patterns(
+  dob=&quot;^dob&quot;, gender=&quot;^gender&quot;
+))
+#&gt;     family_id age_mother variable        dob gender
+#&gt;  1:         1         30        1 1998-11-26      1
+#&gt;  2:         2         27        1 1996-06-22      2
+#&gt;  3:         3         26        1 2002-07-11      2
+#&gt;  4:         4         32        1 2004-10-10      1
+#&gt;  5:         5         29        1 2000-12-05      2
+#&gt;  6:         1         30        2 2000-01-29      2
+#&gt;  7:         2         27        2       &lt;NA&gt;     NA
+#&gt;  8:         3         26        2 2004-04-05      2
+#&gt;  9:         4         32        2 2009-08-27      1
+#&gt; 10:         5         29        2 2005-02-28      1
+#&gt; 11:         1         30        3       &lt;NA&gt;     NA
+#&gt; 12:         2         27        3       &lt;NA&gt;     NA
+#&gt; 13:         3         26        3 2007-09-02      1
+#&gt; 14:         4         32        3 2012-07-21      1
+#&gt; 15:         5         29        3       &lt;NA&gt;     NA
+</code></pre>
+
+<p>The melt above results in a table with one row for each child, and one
+column for each argument of <code>patterns</code>. However the code is somewhat
+repetitive, as <code>dob</code> and <code>gender</code> must be repeated. To avoid this
+repetition we can instead use:</p>
+
+<pre><code class="r">(children.dt &lt;- nc::capture_melt_multiple(
+  family.dt,
+  column=&quot;.*&quot;,
+  &quot;_&quot;,
+  nc::field(&quot;child&quot;, &quot;&quot;, &quot;[1-3]&quot;, as.integer),
+  na.rm=TRUE))
+#&gt;     family_id age_mother child        dob gender
+#&gt;  1:         1         30     1 1998-11-26      1
+#&gt;  2:         2         27     1 1996-06-22      2
+#&gt;  3:         3         26     1 2002-07-11      2
+#&gt;  4:         4         32     1 2004-10-10      1
+#&gt;  5:         5         29     1 2000-12-05      2
+#&gt;  6:         1         30     2 2000-01-29      2
+#&gt;  7:         3         26     2 2004-04-05      2
+#&gt;  8:         4         32     2 2009-08-27      1
+#&gt;  9:         5         29     2 2005-02-28      1
+#&gt; 10:         3         26     3 2007-09-02      1
+#&gt; 11:         4         32     3 2012-07-21      1
+str(children.dt)
+#&gt; Classes &#39;data.table&#39; and &#39;data.frame&#39;:   11 obs. of  5 variables:
+#&gt;  $ family_id : int  1 2 3 4 5 1 3 4 5 3 ...
+#&gt;  $ age_mother: int  30 27 26 32 29 30 26 32 29 26 ...
+#&gt;  $ child     : int  1 1 1 1 1 2 2 2 2 3 ...
+#&gt;  $ dob       : chr  &quot;1998-11-26&quot; &quot;1996-06-22&quot; &quot;2002-07-11&quot; &quot;2004-10-10&quot; ...
+#&gt;  $ gender    : int  1 2 2 1 2 2 2 1 1 1 ...
+#&gt;  - attr(*, &quot;sorted&quot;)= chr &quot;child&quot;
+#&gt;  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
+</code></pre>
+
+<p>The result above is similar to the previous result (and in fact
+<code>melt.data.table</code> is used internally), but the code is less
+repetitive. The first argument of <code>capture_melt_multiple</code> is the
+subject data table and the following arguments form a pattern which is
+matched to the input data column names. The pattern must have at least
+two groups:</p>
+
+<ul>
+<li>One group must be named <code>column</code>. This group is used to capture the
+part of the input column names which will be used for the output
+column names. The output will contain one column for each unique
+value captured in this group.</li>
+<li>One or more other groups (with any names) specify an identifier for
+each observation (above it was the <code>child</code> number).</li>
+</ul>
+
+<p>Another example is the iris data set which usually has one
+5-dimensional observation per row (four numeric measures, and one
+character <code>Species</code>). Below we create a shuffled version of the iris
+data with two observations per row:</p>
+
+<pre><code class="r">set.seed(1)
+iris.rand &lt;- iris.dt[sample(.N)]
+iris.wide &lt;- cbind(treatment=iris.rand[1:75], control=iris.rand[76:150])
+print(iris.wide, topn=2, nrows=10)
+#&gt;     treatment.i treatment.Sepal.Length treatment.Sepal.Width
+#&gt;  1:          68                    5.8                   2.7
+#&gt;  2:         129                    6.4                   2.8
+#&gt; ---                                                         
+#&gt; 74:          91                    5.5                   2.6
+#&gt; 75:          64                    6.1                   2.9
+#&gt;     treatment.Petal.Length treatment.Petal.Width treatment.Species
+#&gt;  1:                    4.1                   1.0        versicolor
+#&gt;  2:                    5.6                   2.1         virginica
+#&gt; ---                                                               
+#&gt; 74:                    4.4                   1.2        versicolor
+#&gt; 75:                    4.7                   1.4        versicolor
+#&gt;     control.i control.Sepal.Length control.Sepal.Width
+#&gt;  1:        60                  5.2                 2.7
+#&gt;  2:       113                  6.8                 3.0
+#&gt; ---                                                   
+#&gt; 74:        57                  6.3                 3.3
+#&gt; 75:        72                  6.1                 2.8
+#&gt;     control.Petal.Length control.Petal.Width control.Species
+#&gt;  1:                  3.9                 1.4      versicolor
+#&gt;  2:                  5.5                 2.1       virginica
+#&gt; ---                                                         
+#&gt; 74:                  4.7                 1.6      versicolor
+#&gt; 75:                  4.0                 1.3      versicolor
+</code></pre>
+
+<p>Below we show the usual data.table syntax for getting the original
+iris back.</p>
+
+<pre><code class="r">iris.melted &lt;- melt(iris.wide, measure.vars = patterns(
+  i=&quot;i$&quot;,
+  Sepal.Length=&quot;Sepal.Length$&quot;,
+  Sepal.Width=&quot;Sepal.Width$&quot;,
+  Petal.Length=&quot;Petal.Length$&quot;,
+  Petal.Width=&quot;Petal.Width$&quot;,
+  Species=&quot;Species$&quot;))
+identical(iris.melted[order(i), names(iris.dt), with=FALSE], iris.dt)
+#&gt; [1] TRUE
+</code></pre>
+
+<p>We can do the same thing with less repetition via:</p>
+
+<pre><code class="r">(nc.melted &lt;- nc::capture_melt_multiple(
+  iris.wide,
+  group=&quot;.*?&quot;,
+  &quot;[.]&quot;,
+  column=&quot;.*&quot;))
+#&gt;          group Petal.Length Petal.Width Sepal.Length Sepal.Width
+#&gt;   1:   control          3.9         1.4          5.2         2.7
+#&gt;   2:   control          5.5         2.1          6.8         3.0
+#&gt;   3:   control          5.6         1.4          6.1         2.6
+#&gt;   4:   control          1.5         0.1          4.9         3.1
+#&gt;   5:   control          1.4         0.2          5.1         3.5
+#&gt;  ---                                                            
+#&gt; 146: treatment          1.6         0.2          4.8         3.1
+#&gt; 147: treatment          1.3         0.4          5.4         3.9
+#&gt; 148: treatment          5.4         2.1          6.9         3.1
+#&gt; 149: treatment          4.4         1.2          5.5         2.6
+#&gt; 150: treatment          4.7         1.4          6.1         2.9
+#&gt;         Species   i
+#&gt;   1: versicolor  60
+#&gt;   2:  virginica 113
+#&gt;   3:  virginica 135
+#&gt;   4:     setosa  10
+#&gt;   5:     setosa   1
+#&gt;  ---               
+#&gt; 146:     setosa  31
+#&gt; 147:     setosa  17
+#&gt; 148:  virginica 140
+#&gt; 149: versicolor  91
+#&gt; 150: versicolor  64
+identical(nc.melted[order(i), names(iris.dt), with=FALSE], iris.dt)
+#&gt; [1] TRUE
+</code></pre>
+
+<p>To conclude this section, we have seen that a simple non-repetitive
+regex syntax can be used with <code>nc::capture_melt_multiple</code> to
+melt wide data into several columns of different types.</p>
+
+<h2>Comparison with tidyr syntax</h2>
+
+<p>The syntax below can be used to get the tall data table of children:</p>
+
+<pre><code class="r">tidyr::pivot_longer(
+  family.dt,
+  cols=dob_child1:gender_child3,
+  names_pattern=&quot;(.*)_child([1-3])&quot;,
+  names_to=c(&quot;.value&quot;, &quot;child.str&quot;),
+  values_drop_na=TRUE)
+#&gt; # A tibble: 11 x 5
+#&gt;    family_id age_mother child.str dob        gender
+#&gt;        &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;int&gt;
+#&gt;  1         1         30 1         1998-11-26      1
+#&gt;  2         1         30 2         2000-01-29      2
+#&gt;  3         2         27 1         1996-06-22      2
+#&gt;  4         3         26 1         2002-07-11      2
+#&gt;  5         3         26 2         2004-04-05      2
+#&gt;  6         3         26 3         2007-09-02      1
+#&gt;  7         4         32 1         2004-10-10      1
+#&gt;  8         4         32 2         2009-08-27      1
+#&gt;  9         4         32 3         2012-07-21      1
+#&gt; 10         5         29 1         2000-12-05      2
+#&gt; 11         5         29 2         2005-02-28      1
+</code></pre>
+
+<p>However the code is somewhat repetitive, as the columns to melt must
+be specified in two arguments: <code>cols</code> and <code>names_pattern</code>. A
+workaround is to use a pre-defined pattern for both arguments:</p>
+
+<pre><code class="r">child.pat.str &lt;- &quot;(.*)_child([1-3])&quot;
+tidyr.children &lt;- tidyr::pivot_longer(
+  family.dt,
+  cols=grep(child.pat.str, names(family.dt)),
+  names_pattern=child.pat.str,
+  names_to=c(&quot;.value&quot;, &quot;child.str&quot;),
+  values_drop_na=TRUE)
+(tidyr.converted &lt;- transform(
+  tidyr.children,
+  child=as.integer(child.str)))
+#&gt;    family_id age_mother child.str        dob gender child
+#&gt; 1          1         30         1 1998-11-26      1     1
+#&gt; 2          1         30         2 2000-01-29      2     2
+#&gt; 3          2         27         1 1996-06-22      2     1
+#&gt; 4          3         26         1 2002-07-11      2     1
+#&gt; 5          3         26         2 2004-04-05      2     2
+#&gt; 6          3         26         3 2007-09-02      1     3
+#&gt; 7          4         32         1 2004-10-10      1     1
+#&gt; 8          4         32         2 2009-08-27      1     2
+#&gt; 9          4         32         3 2012-07-21      1     3
+#&gt; 10         5         29         1 2000-12-05      2     1
+#&gt; 11         5         29         2 2005-02-28      1     2
+str(tidyr.converted)
+#&gt; &#39;data.frame&#39;:    11 obs. of  6 variables:
+#&gt;  $ family_id : int  1 1 2 3 3 3 4 4 4 5 ...
+#&gt;  $ age_mother: int  30 30 27 26 26 26 32 32 32 29 ...
+#&gt;  $ child.str : chr  &quot;1&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; ...
+#&gt;  $ dob       : chr  &quot;1998-11-26&quot; &quot;2000-01-29&quot; &quot;1996-06-22&quot; &quot;2002-07-11&quot; ...
+#&gt;  $ gender    : int  1 2 2 2 2 1 1 1 1 2 ...
+#&gt;  $ child     : int  1 2 1 1 2 3 1 2 3 1 ...
+</code></pre>
+
+<p>However there is still some repetition: <code>child</code> appears in both the
+pattern string and the <code>names_to</code> argument. That repetition is avoided
+if <code>nc::capture_melt_multiple</code> is used with <code>nc::field</code>.</p>
+
+<p>Another difference is that <code>nc</code> allows specification of type
+conversion functions in the pattern, which results in an integer
+<code>child</code> column. In contrast with <code>tidyr</code> output columns such as
+<code>child.str</code> which are created using a regex capture group are always
+character, so type conversions must be specified as a post-processing
+step.</p>
+
+<p>To conclude this section, we have seen that <code>tidyr::pivot_longer</code> uses
+a different syntax to perform a similar computation to
+<code>nc::capture_melt_multiple</code>. Two differences are that <code>nc</code>
+syntax is less repetitive, and allows specifying type conversion
+functions in the pattern, which avoids the need for a post-processing
+step.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+aggregateNcdf           Aggregate data in netCDF files
+checkNcdfFile           check netCDF file for consistency with
+                        CF/COARDS/BGI netCDF conventions
+classR2Ncdf             transfers R classes to netCDF classes
+closeAllNcfiles         Close all open RnetCDF file connections
+convertBinary2Ncdf      transform binary file to netCDF file
+convertDateNcdf2R       Convert netCDF time vector to POSIXct R date
+                        object
+convertDateR2Ncdf       Convert time vectors in netCDF files to Julian
+                        days since a certain origin
+convertFilename2Date    Convert file name patterns to R date object
+createLatLongTime       Create empty lat/lon/time netCDF file
+createStdNcdfFile       Create an empty netCDF file with standardized
+                        attributes and dimensions
+indexDatacube           Create logical index matrices for
+                        multidimensional datacubes
+infoNcdfAtts            Print a summary of all netCDF variable
+                        attributes
+infoNcdfDims            Show info about all dimensions in a netCDF file
+infoNcdfVars            Display information about all variables in
+                        netCDF file
+modifyNcdfAddDim        Add a new dimension to one or more variables in
+                        a netCDF file
+modifyNcdfAppendHistory
+                        Append a string to netCDF history
+modifyNcdfCopyAtts      Copy all attributes between different netCDF
+                        variables
+modifyNcdfCopyMetadata
+                        Copy attributes and dimensions between netCDF
+                        files
+modifyNcdfCopyVar       Copy variable values between netCDF files
+modifyNcdfDefAtts       Define a set netCDF attributes at once
+modifyNcdfSetMissing    Set missing value attribute to a netCDF file
+modifyNcdfStdFile       Standardize file name and missing value
+                        attribute of a ncdf file.
+modifyNcdfStdNames      Modify non standard longitude and latitude
+                        names
+ncdf.tools-package      Easier 'NetCDF' File Handling
+plotDatacube            Visualize/plot an overview of a netCDF file
+readFLUXNETNcdf         read data from FLUXNET NetCDF file.
+readNcdf                Easy reading of netCDF data
+readNcdfCoordinates     Read coordinate or dimension values from netCDF
+                        file
+readNcdfVarName         Get name of variable in netCDF file
+transNcdfCutFiles       Cut margins of netCDF files
+transNcdfMerge          Merge several netCDF files
+transNcdfRotate         Transpose a NetCDF datacube
+transNcdfSubset         Cut and save a subset of a netCDF file
