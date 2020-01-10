@@ -1,4 +1,4 @@
-Click on Run to run the software.
+Click on Run to run the software
 --------------------------------------------------------------------------------------------------------
 Input file format can be found in InputFileFormat folder (for stationRecord.txt and few *.nc4 files)
 --------------------------------------------------------------------------------------------------------
