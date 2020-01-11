@@ -3,7 +3,8 @@ Click on Run to run the software
 Input file format can be found in InputFileFormat folder (for stationRecord.txt and few *.nc4 files)
 --------------------------------------------------------------------------------------------------------
 Documentation of this software, CSAY TRMM DATA DONWLOADER and steps to download TRMM data can be found in 
-Documentation folder.
+Documentation folder. You can download TRMM Data downloader from 
+https://github.com/ajayyadavay/CSAYTRMMDATADOWNLOADER
 ---------------------------------------------------------------------------------------------------------
 The output file (*.txt) is stored in the chosen folder
 
